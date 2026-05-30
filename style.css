@@ -232,6 +232,6 @@ footer a { color: var(--ink-soft); margin: 0 8px; }
   font-size: 13px;
 }
 
-[lang]:not(.active) {
+body [lang]:not(.active) {
   display: none;
 }
