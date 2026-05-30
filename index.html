@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arrow Out — 静かな矢印ゲーム</title>
+<meta name="description" content="Arrow Out is a quiet arrow escape puzzle game. 静かな矢印パズル脱出ゲーム。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="https://github.com/tdyzzsp47/arrow-out/raw/main/assets/favicon.png">
+</head>
+<body>
+<div class="container">
+  <header>
+    <a href="./" class="logo">
+      <svg width="32" height="32" viewBox="0 0 108 108" aria-hidden="true">
+        <path d="M20 36 L 60 36 L 60 22 L 88 50 L 60 78 L 60 64 L 20 64 Z" fill="currentColor" opacity="0.92"/>
+      </svg>
+      Arrow Out
+    </a>
+    <nav>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <svg viewBox="0 0 108 108" aria-hidden="true" style="color: var(--accent);">
+      <path d="M20 36 L 60 36 L 60 22 L 88 50 L 60 78 L 60 64 L 20 64 Z" fill="currentColor" opacity="0.92"/>
+      <path d="M20 36 L 60 36 L 60 22 L 88 50 L 60 78 L 60 64 L 20 64 Z" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
+    </svg>
+    <h1>Arrow Out</h1>
+    <p lang="ja" class="active">静かな矢印ゲーム</p>
+    <p lang="en">Quiet arrow escape game</p>
+  </div>
+
+  <div class="lang-switch" role="group" aria-label="Language">
+    <button data-lang="ja" class="active" onclick="setLang('ja')">日本語</button>
+    <button data-lang="en" onclick="setLang('en')">English</button>
+  </div>
+
+  <div lang="ja" class="active">
+    <p>静寂の中で矢印を逃がす、ASMR系のパズルゲームです。100ステージとデイリーチャレンジ、6つの世界観テーマ、20種類の実績を収録。オフラインで動作し、広告は任意視聴のリワード動画のみ。</p>
+  </div>
+  <div lang="en">
+    <p>A quiet arrow escape puzzle. Slip arrows off the board, clear all to win. 100 levels and a daily challenge, six theme worlds, 20 achievements. Runs entirely offline. Rewarded video ads are opt-in only.</p>
+  </div>
+
+  <div class="cards">
+    <a href="privacy.html" class="card-link">
+      <h3 lang="ja" class="active">プライバシー</h3>
+      <h3 lang="en">Privacy</h3>
+      <p lang="ja" class="active">データの取り扱い</p>
+      <p lang="en">How we handle data</p>
+    </a>
+    <a href="terms.html" class="card-link">
+      <h3 lang="ja" class="active">利用規約</h3>
+      <h3 lang="en">Terms</h3>
+      <p lang="ja" class="active">ご利用にあたって</p>
+      <p lang="en">By using the app</p>
+    </a>
+    <a href="support.html" class="card-link">
+      <h3 lang="ja" class="active">サポート</h3>
+      <h3 lang="en">Support</h3>
+      <p lang="ja" class="active">よくある質問とお問い合わせ</p>
+      <p lang="en">FAQ and contact</p>
+    </a>
+  </div>
+
+  <footer>
+    <p>© 2026 Arrow Out</p>
+    <p>
+      <a href="privacy.html">Privacy</a> ·
+      <a href="terms.html">Terms</a> ·
+      <a href="support.html">Support</a> ·
+      <a href="https://github.com/tdyzzsp47/arrow-out">GitHub</a>
+    </p>
+  </footer>
+</div>
+
+<script>
+function setLang(lang) {
+  document.querySelectorAll('[lang]').forEach(el => {
+    el.classList.toggle('active', el.getAttribute('lang') === lang);
+  });
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  document.documentElement.lang = lang;
+  try { localStorage.setItem('arrow-out-lang', lang); } catch (e) {}
+}
+(function () {
+  let lang = 'ja';
+  try {
+    const saved = localStorage.getItem('arrow-out-lang');
+    if (saved === 'ja' || saved === 'en') lang = saved;
+    else if ((navigator.language || '').toLowerCase().startsWith('en')) lang = 'en';
+  } catch (e) {}
+  setLang(lang);
+})();
+</script>
+</body>
+</html>
